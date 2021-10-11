@@ -24,7 +24,7 @@ $password;
  * ②ログインボタンが押されたかを判定する。
  * 押されていた場合はif文の中の処理を行う
  */
-if (is_set($_POST['decision'])) {
+if (isset($_POST['decision'])) {
 	/*
 	 * ③名前とパスワードが両方とも入力されているかを判定する。
 	 * 入力されていた場合はif文の中の処理を行う。
@@ -47,7 +47,7 @@ if (isset($user_name)) {
 		//⑨SESSIONに名前を設定し、SESSIONの「login」フラグをtrueにする
 		$_SESSION['user_name'] = $user_name;
 		//⑩在庫一覧画面へ遷移する
-		header('Location:ここに貼り付け');
+		header('Location:zaiko_ichiran.php');
 	}else{
 		//⑪名前もしくはパスワードが間違っていた場合は、「ユーザー名かパスワードが間違っています」という文言をメッセージを入れる変数に設定する
 		//わからないので後で
@@ -74,10 +74,10 @@ if (isset($_SESSION['error2'])) {
 		<h1>ログイン</h1>
 		<?php
 		//⑮エラーメッセージの変数に入っている値を表示する
-		echo "<div id='error'>", /* ⑮の変数を書く */, "</div>";
+		//echo "<div id='error'>", /* ⑮の変数を書く */, "</div>";
 		
 		//⑯メッセージの変数に入っている値を表示する
-		echo "<div id='msg'>", /* ⑯の変数を書く */, "</div>";
+		//echo "<div id='msg'>", /* ⑯の変数を書く */, "</div>";
 		?>
 		<form action="login.php" method="post" id="log">
 			<p>
