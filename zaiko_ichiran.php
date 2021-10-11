@@ -46,7 +46,7 @@
 				 */ 
 				//if(/* ⑧の処理を書く */){
 					//⑨SESSIONの「success」の中身を表示する。
-				}
+				//}
 				?>
 			</div>
 			
@@ -54,7 +54,7 @@
 			<div id="left">
 				<p id="ninsyou_ippan">
 					<?php
-						echo @$_SESSION["account_name"];
+						//echo @$_SESSION["account_name"];
 					?><br>
 					<button type="button" id="logout" onclick="location.href='logout.php'">ログアウト</button>
 				</p>
@@ -81,20 +81,20 @@
 					<tbody>
 						<?php
 						//⑩SQLの実行結果の変数から1レコードのデータを取り出す。レコードがない場合はループを終了する。
-						while(/* ⑩の処理を書く */){
-							//⑪extract変数を使用し、1レコードのデータを渡す。
+						// while(/* ⑩の処理を書く */){
+						// 	//⑪extract変数を使用し、1レコードのデータを渡す。
 
-							echo "<tr id='book'>";
-							echo "<td id='check'><input type='checkbox' name='books[]'value="./* ⑫IDを設定する */."></td>";
-							echo "<td id='id'>/* ⑬IDを表示する */</td>";
-							echo "<td id='title'>/* ⑭titleを表示する */</td>";
-							echo "<td id='author'>/* ⑮authorを表示する */</td>";
-							echo "<td id='date'>/* ⑯salesDateを表示する */</td>";
-							echo "<td id='price'>/* ⑰priceを表示する */</td>";
-							echo "<td id='stock'>/* ⑱stockを表示する */</td>";
+						// 	echo "<tr id='book'>";
+						// 	echo "<td id='check'><input type='checkbox' name='books[]'value="./* ⑫IDを設定する */."></td>";
+						// 	echo "<td id='id'>/* ⑬IDを表示する */</td>";
+						// 	echo "<td id='title'>/* ⑭titleを表示する */</td>";
+						// 	echo "<td id='author'>/* ⑮authorを表示する */</td>";
+						// 	echo "<td id='date'>/* ⑯salesDateを表示する */</td>";
+						// 	echo "<td id='price'>/* ⑰priceを表示する */</td>";
+						// 	echo "<td id='stock'>/* ⑱stockを表示する */</td>";
 
-							echo "</tr>";
-						}
+						// 	echo "</tr>";
+						// }
 						?>
 					</tbody>
 				</table>
