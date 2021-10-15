@@ -106,12 +106,11 @@ while ($book = $stmt->fetch(PDO::FETCH_ASSOC)) {
 					<tbody>
 						<?php
 						//⑩SQLの実行結果の変数から1レコードのデータを取り出す。レコードがない場合はループを終了する。
-						$sql = "SELECT * FROM books LIMIT 1;";
-						while(/* ⑩の処理を書く */empty($sql)){
+						while(/* ⑩の処理を書く */$sql = "SELECT * FROM books LIMIT 1;"){
 							//⑪extract変数を使用し、1レコードのデータを渡す。
 
 							echo "<tr id='book'>";
-							echo "<td id='check'><input type='checkbox' name='books[]'value="./* ⑫IDを設定する */"></td>";
+							echo "<td id='check'><input type='checkbox' name='books[]'value="/* ⑫IDを設定する */."></td>";
 							echo "<td id='id'>/* ⑬IDを表示する */</td>";
 							echo "<td id='title'>/* ⑭titleを表示する */</td>";
 							echo "<td id='author'>/* ⑮authorを表示する */</td>";
