@@ -13,25 +13,26 @@
 */
 //⑥セッションを開始する
 session_start();
+session_regenerate_id(true);
 
 
 //①名前とパスワードを入れる変数を初期化する
-$user_name;
-$password;
+$user_name = '';
+$password = '';
 
 
 /*
  * ②ログインボタンが押されたかを判定する。
  * 押されていた場合はif文の中の処理を行う
  */
-if (isset($_POST['decision'])) {
+if (isset($_POST['decision']) && ($_POST['decision'])) {
 	/*
 	 * ③名前とパスワードが両方とも入力されているかを判定する。
 	 * 入力されていた場合はif文の中の処理を行う。
 	 */
 	if (!empty($_POST["name"]) && !empty($_POST['pass'])) {
 		//④名前とパスワードにPOSTで送られてきた名前とパスワードを設定する
-		$user_name = $_POST["name"];
+		$name = $_POST["name"];
 		$password = $_POST["pass"];
 	} else {
 		//⑤名前かパスワードが入力されていない場合は、「名前かパスワードが未入力です」という文言をメッセージを入れる変数に設定する
@@ -41,17 +42,17 @@ if (isset($_POST['decision'])) {
 }
 
 //⑦名前が入力されているか判定する。入力されていた場合はif文の中に入る
-if (isset($user_name)) {
+if (isset($name)) {
 	//⑧名前に「yse」、パスワードに「2021」と設定されているか確認する。設定されていた場合はif文の中に入る
-	if ($user_name == "yse" && $password == "2021"){
+	if ($name == "yse" && $password == "2021"){
 		//⑨SESSIONに名前を設定し、SESSIONの「login」フラグをtrueにする
-		$_SESSION['user_name'] = $user_name;
+		$_SESSION['name'] = $name;
 		$_SESSION['login'] = true;
 		//⑩在庫一覧画面へ遷移する
 		header('Location:zaiko_ichiran.php');
 	}else{
 		//⑪名前もしくはパスワードが間違っていた場合は、「ユーザー名かパスワードが間違っています」という文言をメッセージを入れる変数に設定する
-		//わからないので後で
+		$error_massage = 'ユーザー名かパスワードが間違っています';
 	}
 }
 
