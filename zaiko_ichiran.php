@@ -119,6 +119,10 @@ while ($book = $stmt->fetch(PDO::FETCH_ASSOC)) {
 							echo "<td id='stock'>/* ⑱stockを表示する */</td>";
 
 							echo "</tr>";
+
+							if (empty($sql)) {
+								break;
+							}
 						}
 						?>
 					</tbody>
