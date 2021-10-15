@@ -22,8 +22,29 @@ if (empty($_SESSION['login'] /* ②の処理を書く */)){
 }
 
 //⑤データベースへ接続し、接続情報を変数に保存する
+$db_name = 'zaiko2021_yse';
+$db_host = 'localhost';
+$db_port = '3306';
+$db_user = 'zaiko2021_yse';
+$db_password = '2021zaiko';
+try {
+    $pdo = new PDO($dsn, $db_user, $db_password);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
+} catch (PDOException $e) {
+    echo "接続失敗: " . $e->getMessage();
+    exit;
+}
+$sql = "SELECT * FROM books";
+$stmt = $pdo->query($sql);
+$book = [];
+while ($book = $stmt->fetch(PDO::FETCH_ASSOC)) {
+    $books[] = $book;
+}
+
 
 //⑥データベースで使用する文字コードを「UTF8」にする
+$dsn = "mysql:dbname={$db_name};host={$db_host};charset=utf8;port={$db_port}";
 
 //⑦書籍テーブルから書籍情報を取得するSQLを実行する。また実行結果を変数に保存する
 ?>
