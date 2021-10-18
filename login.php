@@ -45,7 +45,7 @@ if (isset($_POST['decision']) && $_POST['decision'] == 1) {
 //⑦名前が入力されているか判定する。入力されていた場合はif文の中に入る
 if (isset($name)) {
 	//⑧名前に「yse」、パスワードに「2021」と設定されているか確認する。設定されていた場合はif文の中に入る
-	if ($name == 'yse' && $password == '2021'){
+	if ($name == 'yse' && $password == 2021){
 		//⑨SESSIONに名前を設定し、SESSIONの「login」フラグをtrueにする
 		$_SESSION['name'] = $name;
 		$_SESSION['login'] = true;
@@ -61,7 +61,7 @@ if (isset($name)) {
 if (isset($_SESSION['error2'])) {
 	//⑬SESSIONの「error2」の値をエラーメッセージを入れる変数に設定する。
 	//⑭SESSIONの「error2」にnullを入れる。
-	$error_message = $_SESSION['error'];
+	$error_message = $_SESSION['error2'];
 	$_SESSION['error2'] = null;
 }
 
