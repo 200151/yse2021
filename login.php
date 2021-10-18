@@ -19,6 +19,8 @@ session_regenerate_id(true);
 //①名前とパスワードを入れる変数を初期化する
 $name = '';
 $password = '';
+$massage = '';
+$error_massage = '';
 
 
 /*
@@ -36,7 +38,7 @@ if (isset($_POST['decision']) && ($_POST['decision']) == 1) {
 		$password = $_POST["pass"];
 	} else {
 		//⑤名前かパスワードが入力されていない場合は、「名前かパスワードが未入力です」という文言をメッセージを入れる変数に設定する
-		$errors['login']= '名前かパスワードが未入力です';
+		$massage = '名前かパスワードが未入力です';
 
 	}
 }
@@ -52,7 +54,7 @@ if (isset($name)) {
 		header('Location:zaiko_ichiran.php');
 	}else{
 		//⑪名前もしくはパスワードが間違っていた場合は、「ユーザー名かパスワードが間違っています」という文言をメッセージを入れる変数に設定する
-		$error_massage = 'ユーザー名かパスワードが間違っています';
+		$massage = 'ユーザー名かパスワードが間違っています';
 	}
 }
 
@@ -60,6 +62,7 @@ if (isset($name)) {
 if (isset($_SESSION['error2'])) {
 	//⑬SESSIONの「error2」の値をエラーメッセージを入れる変数に設定する。
 	//⑭SESSIONの「error2」にnullを入れる。
+	$error_massage = $_SESSION['error'];
 	$_SESSION['error2'] = null;
 }
 
@@ -76,10 +79,10 @@ if (isset($_SESSION['error2'])) {
 		<h1>ログイン</h1>
 		<?php
 		//⑮エラーメッセージの変数に入っている値を表示する
-		//echo "<div id='error'>", /* ⑮の変数を書く */, "</div>";
+		echo "<div id='error'>", $error_massage, "</div>";
 		
 		//⑯メッセージの変数に入っている値を表示する
-		//echo "<div id='msg'>", /* ⑯の変数を書く */, "</div>";
+		echo "<div id='msg'>", $massage, "</div>";
 		?>
 		<form action="login.php" method="post" id="log">
 			<p>
