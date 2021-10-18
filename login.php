@@ -18,26 +18,26 @@ session_start();
 //①名前とパスワードを入れる変数を初期化する
 $name = '';
 $password = '';
-$massage = '';
-$error_massage = '';
+$message = '';
+$error_message = '';
 
 
 /*
  * ②ログインボタンが押されたかを判定する。
  * 押されていた場合はif文の中の処理を行う
  */
-if (isset($_POST['decision']) && ($_POST['decision']) == 1) {
+if (isset($_POST['decision']) && $_POST['decision'] == 1) {
 	/*
 	 * ③名前とパスワードが両方とも入力されているかを判定する。
 	 * 入力されていた場合はif文の中の処理を行う。
 	 */
-	if (!empty($_POST["name"] && !empty($_POST['pass']))) {
+	if (!empty($_POST['name']) && !empty($_POST['pass'])) {
 		//④名前とパスワードにPOSTで送られてきた名前とパスワードを設定する
-		$name = $_POST["name"];
-		$password = $_POST["pass"];
+		$name = $_POST['name'];
+		$password = $_POST['pass'];
 	} else {
 		//⑤名前かパスワードが入力されていない場合は、「名前かパスワードが未入力です」という文言をメッセージを入れる変数に設定する
-		$massage = '名前かパスワードが未入力です';
+		$message = '名前かパスワードが未入力です';
 
 	}
 }
@@ -45,7 +45,7 @@ if (isset($_POST['decision']) && ($_POST['decision']) == 1) {
 //⑦名前が入力されているか判定する。入力されていた場合はif文の中に入る
 if (isset($name)) {
 	//⑧名前に「yse」、パスワードに「2021」と設定されているか確認する。設定されていた場合はif文の中に入る
-	if ($name == "yse" && $password == "2021"){
+	if ($name == 'yse' && $password == '2021'){
 		//⑨SESSIONに名前を設定し、SESSIONの「login」フラグをtrueにする
 		$_SESSION['name'] = $name;
 		$_SESSION['login'] = true;
@@ -53,7 +53,7 @@ if (isset($name)) {
 		header('Location:zaiko_ichiran.php');
 	}else{
 		//⑪名前もしくはパスワードが間違っていた場合は、「ユーザー名かパスワードが間違っています」という文言をメッセージを入れる変数に設定する
-		$massage = 'ユーザー名かパスワードが間違っています';
+		$message = 'ユーザー名かパスワードが間違っています';
 	}
 }
 
@@ -78,10 +78,10 @@ if (isset($_SESSION['error2'])) {
 		<h1>ログイン</h1>
 		<?php
 		//⑮エラーメッセージの変数に入っている値を表示する
-		echo "<div id='error'>", $error_massage, "</div>";
+		echo "<div id='error'>", $error_message, "</div>";
 		
 		//⑯メッセージの変数に入っている値を表示する
-		echo "<div id='msg'>", $massage, "</div>";
+		echo "<div id='msg'>", $message, "</div>";
 		?>
 		<form action="login.php" method="post" id="log">
 			<p>
