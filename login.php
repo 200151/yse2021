@@ -61,7 +61,7 @@ if (isset($name)) {
 if (isset($_SESSION['error2'])) {
 	//⑬SESSIONの「error2」の値をエラーメッセージを入れる変数に設定する。
 	//⑭SESSIONの「error2」にnullを入れる。
-	$error_massage = $_SESSION['error'];
+	$error_message = $_SESSION['error'];
 	$_SESSION['error2'] = null;
 }
 
