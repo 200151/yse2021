@@ -74,12 +74,13 @@ foreach($_POST["books"] as $book){
 	 * 半角数字以外の文字が設定されていないかを「is_numeric」関数を使用して確認する。
 	 * 半角数字以外の文字が入っていた場合はif文の中に入る。
 	 */
-	if (!is_numeric(($_POST["stock"]["books"]))) {
+	$NumOfShipments = $_POST['stock'][$book_count];
+	if (!is_numeric($NumOfShipments)) {
 		//⑬SESSIONの「error」に「数値以外が入力されています」と設定する。
 		//⑭「include」を使用して「nyuka.php」を呼び出す。
 		//⑮「exit」関数で処理を終了する。
 		$_SESSION['error'] = "数値以外が入力されています";
-		include "nyuka.php";
+		include ("nyuka.php");
 		exit();
 	}
 
