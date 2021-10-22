@@ -87,7 +87,7 @@ foreach($_POST["books"] as $book){
 	
 	//⑰ ⑯で取得した書籍の情報の「stock」と、⑩の変数を元にPOSTの「stock」から値を取り出し、足した値を変数に保存する。
 	//⑱ ⑰の値が100を超えているか判定する。超えていた場合はif文の中に入る。
-	$book_data = getBynd($book,$pdo);
+	$book_data = getByid($book,$pdo);
 	$total_stock = $book_data["stock"] + $_POST["stock"][$books];
 	
 	if($total_stock > 100){
@@ -120,9 +120,9 @@ if(isset($_POST["add"]) && $_POST["add"] = "ok"){
 		//㉗ ㉖で取得した書籍の情報の「stock」と、㉔の変数を元にPOSTの「stock」から値を取り出し、足した値を変数に保存する。
 		//㉘「updateByid」関数を呼び出す。その際に引数に㉕の処理で取得した値と⑧のDBの接続情報と㉗で計算した値を渡す。
 		//㉙ ㉔で宣言した変数をインクリメントで値を1増やす。
-		$book_data = getBynd($book,$pdo);
+		$book_data = getByid($book,$pdo);
 		$total_stock = $book_data["stock"] + $_POST["stock"][$book_count];
-		updateBynd($book,$pdo,$total_stock);
+		updateByid($book,$pdo,$total_stock);
 		$book_count++;
 
 
@@ -166,7 +166,7 @@ if(isset($_POST["add"]) && $_POST["add"] = "ok"){
 						//㉝POSTの「books」から値を取得し、変数に設定する。
 						foreach($_POST["books"] as $book){
 							//㉞「getByid」関数を呼び出し、変数に戻り値を入れる。その際引数に㉜の処理で取得した値と⑧のDBの接続情報を渡す。
-							$book_data = getByind($book,$pdo);
+							$book_data = getByid($book,$pdo);
 						?>
 						<tr>
 							<td><?php echo	$book_data["title"];?></td>
