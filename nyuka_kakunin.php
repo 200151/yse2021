@@ -9,6 +9,7 @@
 */
 
 //①セッションを開始する
+session_start();
 
 function getByid($id,$con){
 	/* 
@@ -16,8 +17,12 @@ function getByid($id,$con){
 	 * その際にWHERE句でメソッドの引数の$idに一致する書籍のみ取得する。
 	 * SQLの実行結果を変数に保存する。
 	 */
+	$sql = "SELECT * FROM book WHERE id = :id";
+	$stmt = $con->prepare($sql);
+	$stmt->execute(["id" => $id]);
 
 	//③実行した結果から1レコード取得し、returnで値を返す。
+	return $stmt->fetch()
 }
 
 function updateByid($id,$con,$total){
