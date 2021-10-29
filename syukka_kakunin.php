@@ -87,7 +87,7 @@ foreach($_POST['books'] as $book){
 	//⑯「getByid」関数を呼び出し、変数に戻り値を入れる。その際引数に⑪の処理で取得した値と⑧のDBの接続情報を渡す。
 	$book_date=getByid($book,$pdo);
 	//⑰ ⑯で取得した書籍の情報の「stock」と、⑩の変数を元にPOSTの「stock」から値を取り出して書籍情報の「stock」から値を引いた値を変数に保存する。
-	$total_stock=$book_date["stock"] - $_POST["stoke"][$count];
+	$total_stock=$book_date["stock"] - $_POST["stock"][$count];
 
 	//⑱ ⑰の値が0未満か判定する。0未満の場合はif文の中に入る。
 	if($total_stock <0){
