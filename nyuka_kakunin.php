@@ -41,11 +41,11 @@ function updateByid($id,$con,$total){
 }
 
 //⑤SESSIONの「login」フラグがfalseか判定する。「login」フラグがfalseの場合はif文の中に入る。
-if (empty($_SESSION['login'])){
+if (!$_SESSION["login"]){
 	//⑥SESSIONの「error2」に「ログインしてください」と設定する。
 	//⑦ログイン画面へ遷移する。
-	$_SESSION['error'] == 'ログインしてください。';
-	header('Location: login.php');
+	$_SESSION["error2"] == "ログインしてください。";
+	header("Location:login.php");
 }
 
 //⑧データベースへ接続し、接続情報を変数に保存する
