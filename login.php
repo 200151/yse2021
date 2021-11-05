@@ -47,7 +47,7 @@ if (isset($name)) {
 	//⑧名前に「yse」、パスワードに「2021」と設定されているか確認する。設定されていた場合はif文の中に入る
 	if ($name == 'yse' && $password == 2021){
 		//⑨SESSIONに名前を設定し、SESSIONの「login」フラグをtrueにする
-		$_SESSION['name'] = $name;
+		$_SESSION['account_name'] = $name;
 		$_SESSION['login'] = true;
 		//⑩在庫一覧画面へ遷移する
 		header('Location:zaiko_ichiran.php');
