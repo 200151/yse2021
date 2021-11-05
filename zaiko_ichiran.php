@@ -70,7 +70,6 @@ $book = [];
 				if(isset($_SESSION['success'])){
 					//⑨SESSIONの「success」の中身を表示する。
 					echo $_SESSION['success'];
-					$_SESSION["success"]="";
 				}
 				?>
 			</div>

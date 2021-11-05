@@ -43,13 +43,14 @@ if (isset($_POST['decision']) && $_POST['decision'] == 1) {
 }
 
 //⑦名前が入力されているか判定する。入力されていた場合はif文の中に入る
-if (isset($name)) {
+if ($name && $password) {
 	//⑧名前に「yse」、パスワードに「2021」と設定されているか確認する。設定されていた場合はif文の中に入る
 	if ($name == 'yse' && $password == 2021){
 		//⑨SESSIONに名前を設定し、SESSIONの「login」フラグをtrueにする
-		$_SESSION['account_name'] = $name;
+		
 		$_SESSION['login'] = true;
 		//⑩在庫一覧画面へ遷移する
+		$_SESSION['account_name'] = $name;
 		header('Location:zaiko_ichiran.php');
 	}else{
 		//⑪名前もしくはパスワードが間違っていた場合は、「ユーザー名かパスワードが間違っています」という文言をメッセージを入れる変数に設定する
