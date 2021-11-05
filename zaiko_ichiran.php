@@ -67,9 +67,11 @@ $book = [];
 				 * ⑧SESSIONの「success」にメッセージが設定されているかを判定する。
 				 * 設定されていた場合はif文の中に入る。
 				 */ 
-				//if(){
+				if(isset($_SESSION['success'])){
 					//⑨SESSIONの「success」の中身を表示する。
-				//}
+					echo $_SESSION['success'];
+					$_SESSION["success"]="";
+				}
 				?>
 			</div>
 			
