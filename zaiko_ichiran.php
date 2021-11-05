@@ -67,7 +67,7 @@ $book = [];
 				 * ⑧SESSIONの「success」にメッセージが設定されているかを判定する。
 				 * 設定されていた場合はif文の中に入る。
 				 */ 
-				//if(/* ⑧の処理を書く */){
+				//if(){
 					//⑨SESSIONの「success」の中身を表示する。
 				//}
 				?>
@@ -77,7 +77,7 @@ $book = [];
 			<div id="left">
 				<p id="ninsyou_ippan">
 					<?php
-						//echo @$_SESSION["account_name"];
+						echo @$_SESSION["account_name"];
 					?><br>
 					<button type="button" id="logout" onclick="location.href='logout.php'">ログアウト</button>
 				</p>
